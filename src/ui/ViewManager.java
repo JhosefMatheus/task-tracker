@@ -1,7 +1,9 @@
 package ui;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+
+import java.awt.Color;
 
 public class ViewManager extends JPanel {
     public ViewManager() {

@@ -1,7 +1,12 @@
 package ui;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Color;
 
 public class MainFrame extends JFrame {
     public MainFrame() {

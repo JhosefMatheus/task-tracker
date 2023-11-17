@@ -1,12 +1,26 @@
 package ui;
 
-import javax.swing.*;
-import java.awt.*;
+import entities.Project;
+import org.jetbrains.annotations.NotNull;
+import services.ProjectService;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.BorderFactory;
+
+import java.awt.Color;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.Cursor;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class SideBar extends JPanel {
+import java.util.List;
 
+public class SideBar extends JPanel {
     public SideBar() {
         Color sideBarBackgroundColor = new Color(92, 84, 112);
 
@@ -29,6 +43,28 @@ public class SideBar extends JPanel {
 
         this.add(projectsLabel, projectsLabelConstraints);
 
+        JButton addProjectButton = getAddProjectButton(sideBarBackgroundColor);
+
+        GridBagConstraints addProjectButtonConstraints = new GridBagConstraints();
+
+        addProjectButtonConstraints.gridx = 1;
+        addProjectButtonConstraints.gridy = 0;
+        addProjectButtonConstraints.weightx = 1;
+        addProjectButtonConstraints.weighty = 1;
+        addProjectButtonConstraints.anchor = GridBagConstraints.FIRST_LINE_END;
+        addProjectButtonConstraints.insets = new Insets(5, 0, 0, 5);
+        addProjectButtonConstraints.ipadx = 10;
+        addProjectButtonConstraints.ipady = 10;
+
+        this.add(addProjectButton, addProjectButtonConstraints);
+
+//        List<Project> projects = ProjectService.getProjects();
+
+        this.setVisible(true);
+    }
+
+    @NotNull
+    private JButton getAddProjectButton(Color sideBarBackgroundColor) {
         JButton addProjectButton = new JButton();
 
         addProjectButton.setText("+");
@@ -51,19 +87,6 @@ public class SideBar extends JPanel {
             }
         });
 
-        GridBagConstraints addProjectButtonConstraints = new GridBagConstraints();
-
-        addProjectButtonConstraints.gridx = 1;
-        addProjectButtonConstraints.gridy = 0;
-        addProjectButtonConstraints.weightx = 1;
-        addProjectButtonConstraints.weighty = 1;
-        addProjectButtonConstraints.anchor = GridBagConstraints.FIRST_LINE_END;
-        addProjectButtonConstraints.insets = new Insets(5, 0, 0, 5);
-        addProjectButtonConstraints.ipadx = 10;
-        addProjectButtonConstraints.ipady = 10;
-
-        this.add(addProjectButton, addProjectButtonConstraints);
-
-        this.setVisible(true);
+        return addProjectButton;
     }
 }
