@@ -1,0 +1,53 @@
+* design:
+- O aplicativo terá uma página principal com uma barra lateral.
+- A barra lateral irá ter a lista de todos os projetos.
+- A página principal irá mostrar o projeto atual selecionado.
+- Ao clicar em um projeto na barra lateral muda o conteúdo da página principal
+para o conteúdo do projeto selecionado.
+- Dentro da página do projeto teremos vários itens de lista que serão clicáveis ser clicáveis.
+- Terá um botão também em algum canto da aplicação que direciona para a página de criação de projeto.
+- Na lista de projetos, na barra lateral, teremos uma setinha ou três pontos que ao ser clicado
+mostra as seguintes opções para o projeto:
+    - Editar;
+     - Excluir;
+- Dentro de um projeto, os itens do projeto terão todos os botões que mostram a seguinte opção:
+    - Editar;
+    - Excluir;
+- Dentro da tela do projeto terá um botão em algum lugar que para adicionar um item ao projeto;
+
+
+* banco de dados:
+- Project:
+    - id (integer);
+    - name (varchar unique);
+    - createdAt (datetime);
+    - updatedAt (datetime nullable);
+
+- ProjectSection:
+    - id (integer);
+    - projectId (integer references project);
+    - name (varchar);
+    - createdAt (datetime);
+    - updatedAt (datetime nullable);
+    - unique(name, projectId)
+
+- ProjectItem:
+    - id (integer);
+    - projectSectionId (integer references project);
+    - projectTypeId (integer);
+    - name (varchar);
+    - createdAt (datetime);
+    - updatedAt (datetime nullable);
+    - finishedAt (datetime nullable);
+    - unique(name, projectSectionId);
+
+- ProjectItemType:
+    - id (integer);
+    - name (varchar unique);
+    - createdAt (datetime);
+    - updatedAt (datetime nullable);
+
+- finishedStatistics:
+    - id (integer);
+    - day (date unique);
+    - count (integer);
